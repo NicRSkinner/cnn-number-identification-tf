@@ -92,6 +92,8 @@ class DeepCNN:
                 ybatch = y[0:50]
 
                 if i % 1 == 0:
+                xtestbatch = xtest[0:50]
+                ytestbatch = ytest[0:50]
                     train_accuracy = accuracy.eval(feed_dict={
                         inputs: xbatch, y_: ybatch, keep_prob: 1.0})
                     print('step %d, training accuracy %g' % (i, train_accuracy))
@@ -99,4 +101,4 @@ class DeepCNN:
                 train_step.run(feed_dict={inputs: xbatch, y_: ybatch, keep_prob: 0.5})
 
             print('test accuracy %g' % accuracy.eval(feed_dict={
-                inputs: xtest, y_: ytest, keep_prob: 1.0}))
+                inputs: xtestbatch, y_: ytestbatch, keep_prob: 1.0}))
