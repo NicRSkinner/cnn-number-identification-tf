@@ -10,9 +10,17 @@ class DeepCNN:
     def savefile(self):
         return self.savefile
 
+    @savefile.setter
+    def savefile(self, value):
+        self.savefile = value
+
     @property
     def prediction_op(self):
         return self.prediction_op
+
+    @prediction_op.setter
+    def prediction_op(self, value):
+        self.prediction_op = value
 
     def build(self, x):
         x_image = tf.reshape(x, [-1, 28, 28, 1])
