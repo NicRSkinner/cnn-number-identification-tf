@@ -41,7 +41,7 @@ def get_arr_images(fbytes):
 
     item_amt = int(fdata.size / (28 * 28))
 
-    fdata = np.reshape(fdata, (item_amt, 28, 28))
+    fdata = np.reshape(fdata, (item_amt, 784))
 
     return fdata
 
@@ -50,7 +50,9 @@ def get_arr_labels(fbytes):
     fdata = []
 
     for fbyte in fbytes:
-        fdata.append(fbyte)
+        farr = np.array(np.zeros((10,)))
+        farr[fbyte-1] = 1
+        fdata.append(farr)
 
     fdata = np.array(fdata)
 
