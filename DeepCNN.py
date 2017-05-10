@@ -6,6 +6,14 @@ class DeepCNN:
     def __init__(self, savefile):
         self.savefile = savefile
 
+    @property
+    def savefile(self):
+        return self.savefile
+
+    @property
+    def prediction_op(self):
+        return self.prediction_op
+
     def build(self, x):
         x_image = tf.reshape(x, [-1, 28, 28, 1])
 
