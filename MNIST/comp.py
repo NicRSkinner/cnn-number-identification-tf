@@ -71,11 +71,6 @@ def pickle_files(filenames):
     with open('data.pkl', 'wb') as data_file:
         pickle.dump(file_data, data_file)
 
-
-def de_pickle():
-    train_labels, train_images, test_labels, test_images = pickle.load(open('data.pkl', 'rb'))
-
-
 if __name__ == '__main__':
     filenames = [
         FLAGS.train_labels,
@@ -85,4 +80,3 @@ if __name__ == '__main__':
     ]
 
     pickle_files(filenames)
-    de_pickle()
