@@ -1,7 +1,6 @@
 import numpy as np
 import tensorflow as tf
 import pickle
-from PIL import Image
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
@@ -76,18 +75,6 @@ def pickle_files(filenames):
 def de_pickle():
     train_labels, train_images, test_labels, test_images = pickle.load(open('data.pkl', 'rb'))
 
-    print(np.array(test_labels)[2])
-    test_image = np.array(test_images)[2]
-
-    img = Image.new('L', (28, 28), "black")
-    pixels = img.load()
-
-    for i in range(img.size[0]):
-        for j in range(img.size[1]):
-            pixels[i, j] = (test_image[i][j],)
-
-    img.show()
-
 
 if __name__ == '__main__':
     filenames = [
@@ -97,5 +84,5 @@ if __name__ == '__main__':
         FLAGS.test_images
     ]
 
-    #pickle_files(filenames)
+    pickle_files(filenames)
     de_pickle()
