@@ -87,13 +87,14 @@ class DeepCNN:
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
 
-            for i in range(1):
+            for i in range(300):
                 xbatch = x[0:50]
                 ybatch = y[0:50]
 
-                if i % 1 == 0:
                 xtestbatch = xtest[0:50]
                 ytestbatch = ytest[0:50]
+
+                if i % 100 == 0:
                     train_accuracy = accuracy.eval(feed_dict={
                         inputs: xbatch, y_: ybatch, keep_prob: 1.0})
                     print('step %d, training accuracy %g' % (i, train_accuracy))
