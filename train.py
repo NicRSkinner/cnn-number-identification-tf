@@ -33,4 +33,4 @@ if __name__ == '__main__':
 
     model = DeepCNN('tf.model')
 
-    model.fit(x=train_images, y=train_labels, xtest=test_images, ytest=train_labels)
+    model.fit(x=train_images, y=train_labels, xtest=test_images, ytest=test_labels)
