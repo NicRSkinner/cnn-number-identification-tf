@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-
+from Batching import Batching
 
 class DeepCNN:
     def __init__(self, savefile):
@@ -78,13 +78,10 @@ class DeepCNN:
 
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
+            batcher = Batching(x, y)
 
-            for i in range(300):
-                xbatch = x[0:50]
-                ybatch = y[0:50]
-
-                xtestbatch = xtest[0:50]
-                ytestbatch = ytest[0:50]
+            for i in range(600):
+                xbatch, ybatch = batcher.next_batch(50)
 
                 if i % 100 == 0:
                     train_accuracy = accuracy.eval(feed_dict={
@@ -94,4 +91,4 @@ class DeepCNN:
                 train_step.run(feed_dict={inputs: xbatch, y_: ybatch, keep_prob: 0.5})
 
             print('test accuracy %g' % accuracy.eval(feed_dict={
-                inputs: xtestbatch, y_: ytestbatch, keep_prob: 1.0}))
+                inputs: xtest, y_: ytest, keep_prob: 1.0}))
